@@ -1,12 +1,21 @@
 {
-  "name": "toku-api",
-  "version": "0.1.0",
-  "description": "API for Toku - Twitter-like easy to deploy",
-  "main": "app.js",
-  "author": "Tim Izzo / Sika",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.14.0",
-    "mongoose": "^4.6.6"
-  }
+    "name": "toku-api",
+    "version": "0.1.0",
+    "description": "API for Toku - Twitter-like easy to deploy",
+    "main": "app.js",
+    "author": "Tim Izzo / Sika",
+    "license": "MIT",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "mongoose": "^4.6.6",
+        "morgan": "^1.7.0"
+    },
+    "config": {
+        "port": 7042,
+        "delete_password": "random_password"
+    }
 }

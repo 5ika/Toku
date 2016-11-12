@@ -82,7 +82,7 @@ module.exports = (grunt) => {
             },
             js: {
                 files: ["src/js/**/*.js"],
-                tasks: ['browserify', 'uglify']
+                tasks: ['browserify'] // Add 'uglify'
             },
             css: {
                 files: ["src/scss/**/*.scss"],

@@ -43,6 +43,28 @@ api.put('/:id', (req, res) => {
     Posts.findByIdAndUpdate(id, data, (err, object) => handleData(err, object, res));
 });
 
+// PUT / Upvote a post by ID
+api.put('/up/:id', (req, res) => {
+    const id = req.params.id;
+    const update = {
+        $inc: {
+            "votes.up": 1
+        }
+    };
+    Posts.findByIdAndUpdate(id, update, (err, object) => handleData(err, object, res));
+});
+
+// PUT / Downvote a post by ID
+api.put('/down/:id', (req, res) => {
+    const id = req.params.id;
+    const update = {
+        $inc: {
+            "votes.down": 1
+        }
+    };
+    Posts.findByIdAndUpdate(id, update, (err, object) => handleData(err, object, res));
+});
+
 // DELETE a post by ID
 api.delete('/:id', (req, res) => {
     const pass = req.body.password;

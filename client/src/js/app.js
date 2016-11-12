@@ -1,2 +1,10 @@
-// Babel with presets esma2015 & react
-console.log('Hello world');
+window.$ = require('jquery');
+require('materialize-css');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+
+$(() => {
+    ReactDOM.render(
+        <App/>, document.getElementById('App'));
+});

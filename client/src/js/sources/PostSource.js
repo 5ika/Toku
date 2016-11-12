@@ -8,7 +8,7 @@ const PostSource = {
     },
     add: (post) => {
         return new Promise(function (resolve, reject) {
-            $.post(api, resolve).fail(reject);
+            $.post(api, post, resolve).fail(reject);
         });
     },
     like: (id) => {

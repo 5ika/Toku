@@ -1,5 +1,7 @@
+$body-width    : 95%;
+$body-max-width: 30rem;
 @import "materialize";
 @import "vendors/font-awesome/font-awesome";
-
 @import "components/App";
 @import "components/post/index";
+@import "components/form/index";

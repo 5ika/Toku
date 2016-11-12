@@ -1,6 +1,8 @@
 const alt = require('../alt');
 const PostActions = require('../actions/PostAction');
 
+const postsSort = (a, b) => new Date(b.date) - new Date(a.date);
+
 class PostStore {
     constructor() {
         this.posts = [];
@@ -10,7 +12,7 @@ class PostStore {
     }
 
     handleUpdatePosts(posts) {
-        this.posts = posts;
+        this.posts = posts.sort(postsSort);
     }
     handleFetchPosts() {
         this.posts = [];

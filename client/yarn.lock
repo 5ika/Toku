@@ -1297,6 +1297,10 @@ crypto-browserify@^3.0.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
 
+cssfilter@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/cssfilter/-/cssfilter-0.0.8.tgz#6564caccba8a76dd9b4b920668b9fb7fda50e54c"
+
 ctype@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/ctype/-/ctype-0.5.3.tgz#82c18c2461f74114ef16c135224ad0b9144ca12f"
@@ -4112,6 +4116,13 @@ wtf-8@1.0.0:
 xmlhttprequest-ssl@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.1.tgz#3b7741fea4a86675976e908d296d4445961faa67"
+
+xss:
+  version "0.2.17"
+  resolved "https://registry.yarnpkg.com/xss/-/xss-0.2.17.tgz#c7d9a634fbc864af5e4643e7fae6544e56698738"
+  dependencies:
+    commander "^2.9.0"
+    cssfilter "^0.0.8"
 
 xtend@^4.0.0, xtend@~4.0.0:
   version "4.0.1"

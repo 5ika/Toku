@@ -2,6 +2,7 @@ const React = require('react');
 const PostStore = require('../stores/PostStore');
 const PostActions = require('../actions/PostAction');
 const Post = require('../components/Post');
+const Form = require('../components/Form');
 
 class App extends React.Component {
     constructor(props) {
@@ -10,8 +11,8 @@ class App extends React.Component {
             store: PostStore.getState()
         };
         this.onChange = this.onChange.bind(this);
+        this.addPost = this.addPost.bind(this);
         this.is_liked = this.is_liked.bind(this);
-
     }
 
     componentDidMount() {
@@ -27,6 +28,10 @@ class App extends React.Component {
         this.setState({store});
     }
 
+    addPost(post) {
+        PostActions.addPost(this.state.store.posts, post);
+    }
+
     is_liked(id) {
         return this.state.store.liked.indexOf(id) != -1;
     }
@@ -34,7 +39,12 @@ class App extends React.Component {
     render() {
         return (
             <div className='app'>
+                <div className='form'>
+                    <Form addPost={this.addPost}/>
+                </div>
                 <div className='list'>
+                    {!this.state.store.posts.length && <div className='no-post'>Il n'y a aucun post.<br/> Soyez le premier !</div>
+}
                     {this.state.store.posts.map((post, index) => {
                         return <Post {...post} is_liked={this.is_liked(post._id)} key={index}/>;
                     })

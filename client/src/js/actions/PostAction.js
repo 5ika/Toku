@@ -12,7 +12,10 @@ class PostActions {
         }
     }
     addPost(posts, post) {
-        PostSource.add(post).then((returnedPost) => this.updatePosts(posts.push(post))).catch(() => this.postsFailed('Impossible d\'ajouter le post'));
+        return (dispatch) => {
+            dispatch();
+            PostSource.add(post).then((returnedPost) => this.updatePosts([...posts, returnedPost])).catch(() => this.postsFailed('Impossible d\'ajouter le post'));
+        }
     }
     likePost(id) {
         PostSource.like(id).catch(this.postsFailed('Imposible d\'aimer le post'));

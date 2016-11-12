@@ -1,18 +1,23 @@
 .post {
     &.card {
         margin          : 1rem auto;
-        width           : 95%;
-        max-width       : 30rem;
+        width           : $body-width;
+        max-width       : $body-max-width;
         border-radius   : 5px;
         background-color: $white;
+
+        .card-image img {
+            border-radius: 5px 5px 0 0;
+        }
 
         .like {
             float    : right;
             cursor   : pointer;
             font-size: 1.2rem;
-            color  : $primary-color;
+            color    : $primary-color;
 
-           &:hover i::before, &[data-selected='true'] i::before {
+            &:hover i::before,
+            &[data-selected='true'] i::before {
                 content: "\f004";
                 color  : $primary-color;
             }
@@ -33,7 +38,9 @@
                 font-size: 0.8rem;
             }
 
-            .content {}
+            .content {
+                color: $primary-text;
+            }
 
         }
     }

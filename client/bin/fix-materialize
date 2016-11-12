@@ -1,1 +1,2 @@
+#!/bin/bash
 cp node_modules/materialize-css/js/date_picker/picker.js node_modules/materialize-css/bin/

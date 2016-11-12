@@ -1,7 +1,7 @@
 {
-  "name": "app_name",
+  "name": "toku-client",
   "version": "0.1.0",
-  "description": "AppDescription",
+  "description": "Client Toku - Micro-blogging simpliste",
   "main": "gruntfile.js",
   "scripts": {
     "build": "bin/docker-build.sh",

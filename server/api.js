@@ -1,7 +1,7 @@
 const api = require('express').Router();
 const config = require('./package.json').config;
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/toku');
+mongoose.connect(`mongodb://${process.env.MONGODB_URL}/toku`);
 
 const Posts = require('./models/post');
 
@@ -24,7 +24,7 @@ const handleData = (error, data, res) => {
 api.get('/', (req, res) => Posts.find({}, (error, data) => handleData(error, data, res)));
 
 // GET :number last posts
-api.get('/last/:number', (req, res) => Posts.find({}).sort({date: -1}).limit(req.params.number).exec((error, data) => handleData(error, data, res)));
+api.get('/last/:number', (req, res) => Posts.find({}).sort({date: -1}).limit(parseInt(req.params.number)).exec((error, data) => handleData(error, data, res)));
 
 // GET One post by ID
 api.get('/:id', (req, res) => Posts.findById(req.params.id, (error, data) => handleData(error, data, res)));
@@ -32,6 +32,7 @@ api.get('/:id', (req, res) => Posts.findById(req.params.id, (error, data) => han
 // POST a new post
 api.post('/', (req, res) => {
     const data = req.body;
+    console.log(data);
     const post = new Posts(data);
     post.save((err) => handleData(err, post, res));
 });

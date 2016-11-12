@@ -1,0 +1,22 @@
+version: "2"
+services:
+ mongo:
+  image: mongo
+
+ api:
+  image: toku-api
+  build:
+   dockerfile: Dockerfile
+   context: ./server/
+  ports:
+   - "7042:7042"
+  environment:
+   MONGODB_URL: mongo
+
+ client:
+  image: toku-client
+  build:
+   dockerfile: Dockerfile
+   context: ./client
+  ports:
+   - "8080:80"

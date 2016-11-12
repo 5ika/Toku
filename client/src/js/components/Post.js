@@ -25,7 +25,10 @@ class Post extends React.Component {
             </div>
 }
             <div className='card-content'>
-                <div className='like' data-selected={this.props.is_liked} onClick={this.like}><i className='fa fa-heart-o'/></div>
+                <div className='like' data-selected={this.props.is_liked} onClick={this.like}>
+                    <i className='fa fa-heart-o'/>
+                    <div className='rank'>{this.props.votes.up}</div>
+                </div>
                 <div className='infos'>
                     <div className='author'>{this.props.auteur}</div>
                     <div className='date'>{this.formatDate(this.props.date)}</div>

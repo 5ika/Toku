@@ -18,10 +18,13 @@ class App extends React.Component {
     componentDidMount() {
         PostStore.listen(this.onChange);
         PostActions.fetchPosts();
+
+        this.refresh = setInterval(PostActions.fetchPosts, 20000);
     }
 
     componentWillUnmout() {
         PostStore.unlisten(this.onChange);
+        clearInterval(this.refresh);
     }
 
     onChange(store) {
@@ -43,15 +46,16 @@ class App extends React.Component {
                     <Form addPost={this.addPost}/>
                 </div>
                 <div className='list'>
-                    {!this.state.store.posts.length && <div className='no-post'>Il n'y a aucun post.<br/> Soyez le premier !</div>
-}
-                    {this.state.store.posts.map((post, index) => {
+                    {!this.state.store.posts.length && <div className='no-post'>Il n'y a aucun post.<br/>
+                        Soyez le premier !</div>
+                }
+                {
+                    this.state.store.posts.map((post, index) => {
                         return <Post {...post} is_liked={this.is_liked(post._id)} key={index}/>;
                     })
-}
-                </div>
+                } </div>
             </div>
-        )
+           )
     }
 }
 

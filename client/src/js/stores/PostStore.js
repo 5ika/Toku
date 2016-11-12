@@ -19,6 +19,11 @@ class PostStore {
     }
     handleLikePost(id) {
         this.liked.push(id)
+        this.posts = this.posts.map((post) => {
+            if (post._id == id)
+                post.votes.up++;
+            return post;
+        });
         localStorage.setItem('liked', JSON.stringify(this.liked));
     }
     handlePostsFailed(errorMessage) {

@@ -1,13 +1,18 @@
 .post {
-    .content {
-        .hashtag {
-            color: $primary-color-dark;
-        }
+	.content {
+		.hashtag {
+			color: $primary-color-dark;
+		}
 
-        .at {
-            color      : $primary-color-dark;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-    }
+		.at {
+			color      : $primary-color-dark;
+			font-weight: 600;
+			font-size  : 1.1rem;
+		}
+
+		.emoji {
+			width         : 1.3rem;
+			vertical-align: top;
+		}
+	}
 }

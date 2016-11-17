@@ -1,5 +1,7 @@
 # node_modules directories
 server/node_modules
+server/images/*.png
+server/images/*.jpeg
 client/node_modules
 
 # Logs

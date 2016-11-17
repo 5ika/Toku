@@ -1,0 +1,33 @@
+.stoast-container {
+    position: fixed;
+    right   : 3rem;
+    top     : 2rem;
+    z-index : 1000;
+}
+
+.stoast {
+    background-color: #424242;
+    border-radius   : 5px;
+    padding         : 0.7rem 1.3rem;
+    color           : white;
+    max-width       : 20rem;
+    margin-bottom   : 1rem;
+    box-shadow      : 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.3);
+    text-align      : center;
+}
+@media only screen and (max-width: 768px) {
+    .stoast-container {
+        width : 100%;
+        top   : inherit;
+        bottom: 0;
+        right : 0;
+
+    }
+
+    .stoast {
+        width       : 95%;
+        max-width   : 100%;
+        margin-left : auto;
+        margin-right: auto;
+    }
+}

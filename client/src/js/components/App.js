@@ -19,7 +19,7 @@ class App extends React.Component {
         PostStore.listen(this.onChange);
         PostActions.fetchPosts();
 
-        this.refresh = setInterval(PostActions.fetchPosts, 20000);
+        //this.refresh = setInterval(PostActions.fetchPosts, 20000);
     }
 
     componentWillUnmout() {
@@ -31,8 +31,10 @@ class App extends React.Component {
         this.setState({store});
     }
 
-    addPost(post) {
-        PostActions.addPost(this.state.store.posts, post);
+    addPost(formData) {
+					console.log('APP');
+
+        PostActions.addPost(this.state.store.posts, formData);
     }
 
     is_liked(id) {

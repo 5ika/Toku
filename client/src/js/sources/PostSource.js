@@ -1,4 +1,4 @@
-const api = "http://cumulus:7042";
+const api = require('../../../package.json').config.api;
 const put = (url, data, success) => $.ajax({type: 'PUT', dataType: 'json', success, url, data});
 const PostSource = {
     fetch: () => {
@@ -6,9 +6,20 @@ const PostSource = {
             $.get(api + "/last/20", resolve).fail(reject);
         });
     },
-    add: (post) => {
+    add: (formData) => {
+					console.log('Source');
+
         return new Promise(function (resolve, reject) {
-            $.post(api, post, resolve).fail(reject);
+            $.ajax({
+                url: api,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: resolve,
+                error: reject
+            })
         });
     },
     like: (id) => {

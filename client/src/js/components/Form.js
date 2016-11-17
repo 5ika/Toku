@@ -10,46 +10,68 @@ class Form extends React.Component {
         this.addPost = this.addPost.bind(this);
     }
     onKeyUp() {
-        this.setState({char_count: $('.content textarea').val().length});
+        const length = $('.content textarea').val().length;
+        this.setState({char_count: length});
+        length > 0
+            ? $('.content textarea').addClass('not-empty')
+            : $('.content textarea').removeClass('not-empty');
     }
     showSecondary() {
         $('.secondary').slideDown();
     }
-    addPost() {
+    updateFileIcon() {
+        if ($('.actions .input-file').val()) {
+            $('.actions .icon-file').addClass('selected');
+        }
+    }
+    addPost(e) {
+        e.preventDefault();
+								console.log('FORM');
         if ($('.content .input-text').val()) {
-            const post = {
-                auteur: $('.author .input-text').val(),
-                content: $('.content .input-text').val()
-            }
-            $('.content .input-text').val('');
-            this.props.addPost(post);
+            const data = new FormData($('#new-form')[0]);
+            this.props.addPost(data);
+            // Clear the form
+            $('.input-file, .input-text').val('');
+            $('.actions .icon-file').removeClass('selected');
+												$('.secondary').slideUp();
+												$('.content textarea').removeClass('not-empty');
+            // Notify
+            toast('C\'est envoyé !');
         }
     }
 
     render() {
         return <div className='new'>
-            <div className='content'>
-                <textarea
-                    className='input-text'
-                    placeholder='Hey, tout le monde !'
-                    maxLength='140'
-                    onKeyUp={this.onKeyUp}
-                    onFocus={this.showSecondary}/>
-            </div>
-            <div className='secondary'>
-                <div className='actions'>
-                    <label htmlFor='upload-image'><i className='fa fa-camera'/></label>
-                    <input type='file' id='upload-image' className='input-file'/>
-                    <div className='char-count'>{this.state.char_count}</div>
+            <form encType='multipart/form-data' id='new-form'>
+                <div className='content'>
+                    <textarea
+                        className='input-text'
+                        name='content'
+                        placeholder='Écrire un message...'
+                        maxLength='140'
+                        onKeyUp={this.onKeyUp}
+                        onFocus={this.showSecondary}/>
                 </div>
+                <div className='secondary'>
+                    <div className='actions'>
+                        <label htmlFor='upload-image'><i className='icon-file fa fa-camera'/></label>
+                        <input
+                            type='file'
+                            id='upload-image'
+                            className='input-file'
+                            name='image'
+                            onChange={this.updateFileIcon}/>
+                        <div className='char-count'>{this.state.char_count}</div>
+                    </div>
 
-                <div className='author'>
-                    <input type='text' className='input-text' placeholder='Anonyme' maxLength='20'/>
+                    <div className='author'>
+                        <input type='text' className='input-text' placeholder='Anonyme' maxLength='20' name='auteur'/>
+                    </div>
+                    <div className='submit'>
+                        <button className='btn' onClick={this.addPost}>Poster</button>
+                    </div>
                 </div>
-                <div className='submit'>
-                    <button className='btn-flat' onClick={this.addPost}>Poster</button>
-                </div>
-            </div>
+            </form>
         </div>;
     }
 

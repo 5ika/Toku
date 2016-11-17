@@ -9,6 +9,10 @@
 
     .secondary {
         display: none;
+
+        &.show {
+            display: block;
+        }
     }
 
     .input-text {
@@ -29,6 +33,7 @@
     }
 
     .content {
+        .input-text.not-empty,
         .input-text:focus {
             line-height: 1rem;
             height     : 5rem;
@@ -41,14 +46,18 @@
         display: inline-block;
 
         .fa {
-            color      : $fog;
+            color      : $white;
             cursor     : pointer;
             margin-top : 0.5rem;
             margin-left: 0.5rem;
             font-size  : 1.2rem;
 
+            &.selected {
+                color: $secondary-color;
+            }
+
             &:hover {
-                color: $white;
+                color: $fog;
             }
         }
     }
@@ -77,6 +86,12 @@
         .btn,
         .btn-flat {
             color: $white;
+            background-color: $primary-color-light;
+												box-shadow: none;
+
+            &:hover {
+                background-color: $primary-color-dark;
+            }
         }
     }
 

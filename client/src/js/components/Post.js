@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import Parser from '../parser/parser';
 import PostActions from '../actions/PostAction';
+const server = require('../../../package.json').config.api;
 require('moment/locale/fr');
 moment.locale('fr');
 
@@ -21,7 +22,7 @@ class Post extends React.Component {
     render() {
         return <div className='post card'>
             {this.props.image && <div className='card-image'>
-                <img className='responsive-img' src={this.props.image}/>
+                <img className='responsive-img' src={server + this.props.image}/>
             </div>
 }
             <div className='card-content'>

@@ -1,8 +1,9 @@
 const api = require('express').Router();
 const config = require('./package.json').config;
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://${process.env.MONGODB_URL}/toku`);
+mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost'}/toku`);
 
+const upload = require('./modules/uploader');
 const Posts = require('./models/post');
 
 const allowCrossDomain = (req, res, next) => {
@@ -30,9 +31,10 @@ api.get('/last/:number', (req, res) => Posts.find({}).sort({date: -1}).limit(par
 api.get('/:id', (req, res) => Posts.findById(req.params.id, (error, data) => handleData(error, data, res)));
 
 // POST a new post
-api.post('/', (req, res) => {
+api.post('/', upload.single('image'), (req, res) => {
     const data = req.body;
-    console.log(data);
+    if (req.file)
+        data.image = '/images/' + req.file.filename;
     const post = new Posts(data);
     post.save((err) => handleData(err, post, res));
 });

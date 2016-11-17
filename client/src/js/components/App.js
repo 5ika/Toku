@@ -44,6 +44,7 @@ class App extends React.Component {
     render() {
         return (
             <div className='app'>
+																<div className='app-title'><img className='responsive-img' src='/assets/logo.png'/></div>
                 <div className='form'>
                     <Form addPost={this.addPost}/>
                 </div>
@@ -56,6 +57,10 @@ class App extends React.Component {
                         return <Post {...post} is_liked={this.is_liked(post._id)} key={index}/>;
                     })
                 } </div>
+                <div className='controls'>
+                 <div className='action refresh' onClick={PostActions.fetchPosts} title='Rafraîchir les posts'><i className='fa fa-refresh'/></div>
+                 <a href='/infos.html' target='_blank' className='action more' title="Plus d'infos"><i className='fa fa-plus-circle'/></a>
+                </div>
             </div>
            )
     }

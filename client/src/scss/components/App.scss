@@ -10,3 +10,45 @@ html {
 	text-align: center;
 	margin-top: 3rem;
 }
+
+.app-title {
+	margin    : 1rem auto auto;
+	width     : 100%;
+	font-size : 4rem;
+	text-align: center;
+
+	img {
+		width: 11rem;
+	}
+}
+
+.controls {
+	position : fixed;
+	bottom   : 0.5rem;
+	right    : 1rem;
+	color    : $medium-gray;
+	display  : flex;
+	font-size: 1.2rem;
+
+	a {
+		color: $medium-gray;
+	}
+
+	.action {
+		cursor      : pointer;
+		padding     : 0.3rem;
+		margin-right: 0.5rem;
+
+		&:hover {
+			color: $primary-color;
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+	.controls {
+		position    : static;
+		float       : right;
+		margin-right: 1rem;
+		margin-top  : 3rem;
+	}
+}

@@ -1,0 +1,18 @@
+.page-infos {
+    .container {
+        background-color: white;
+        width           : $body-width;
+        max-width       : $body-max-width;
+        margin          : 2rem auto;
+        padding         : 1rem;
+
+        img {
+            display      : block;
+            margin-bottom: 1rem;
+        }
+
+        .emoji {
+            width: 1.2rem;
+        }
+    }
+}

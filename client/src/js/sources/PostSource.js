@@ -7,8 +7,6 @@ const PostSource = {
         });
     },
     add: (formData) => {
-					console.log('Source');
-
         return new Promise(function (resolve, reject) {
             $.ajax({
                 url: api,
@@ -20,6 +18,19 @@ const PostSource = {
                 success: resolve,
                 error: reject
             })
+        });
+    },
+    remove: (id, password) => {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: api + '/' + id,
+                data: {
+                    password
+                },
+                type: 'DELETE',
+                success: resolve,
+                error: reject
+            });
         });
     },
     like: (id) => {

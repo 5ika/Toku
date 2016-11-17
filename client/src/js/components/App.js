@@ -13,12 +13,12 @@ class App extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.addPost = this.addPost.bind(this);
         this.is_liked = this.is_liked.bind(this);
+								this.removePost = this.removePost.bind(this);
     }
 
     componentDidMount() {
         PostStore.listen(this.onChange);
         PostActions.fetchPosts();
-
         //this.refresh = setInterval(PostActions.fetchPosts, 20000);
     }
 
@@ -32,14 +32,16 @@ class App extends React.Component {
     }
 
     addPost(formData) {
-					console.log('APP');
-
         PostActions.addPost(this.state.store.posts, formData);
     }
 
     is_liked(id) {
         return this.state.store.liked.indexOf(id) != -1;
     }
+
+				removePost(id, password) {
+					PostActions.removePost(this.state.store.posts, id, password);
+				}
 
     render() {
         return (
@@ -54,7 +56,7 @@ class App extends React.Component {
                 }
                 {
                     this.state.store.posts.map((post, index) => {
-                        return <Post {...post} is_liked={this.is_liked(post._id)} key={index}/>;
+                        return <Post {...post} is_liked={this.is_liked(post._id)} remove={this.removePost} key={index}/>;
                     })
                 } </div>
                 <div className='controls'>

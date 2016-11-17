@@ -26,15 +26,16 @@ class Form extends React.Component {
     }
     addPost(e) {
         e.preventDefault();
-								console.log('FORM');
         if ($('.content .input-text').val()) {
+            if (!$('.author .input-text').val())
+                $('.author .input-text').val('Anonyme');
             const data = new FormData($('#new-form')[0]);
             this.props.addPost(data);
             // Clear the form
             $('.input-file, .input-text').val('');
             $('.actions .icon-file').removeClass('selected');
-												$('.secondary').slideUp();
-												$('.content textarea').removeClass('not-empty');
+            $('.secondary').slideUp();
+            $('.content textarea').removeClass('not-empty');
             // Notify
             toast('C\'est envoyé !');
         }

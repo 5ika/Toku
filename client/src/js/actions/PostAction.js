@@ -12,20 +12,27 @@ class PostActions {
         }
     }
     addPost(posts, formData) {
-					console.log('ACTION');
-
         return (dispatch) => {
             dispatch();
-            PostSource.add(formData).then((returnedPost) => this.updatePosts([...posts, returnedPost])).catch(() => this.postsFailed('Impossible d\'ajouter le post'));
+            PostSource.add(formData).then((returnedPost) => this.updatePosts([
+                ...posts,
+                returnedPost
+            ])).catch(() => this.postsFailed('Impossible d\'ajouter le post'));
         }
     }
     likePost(id) {
         PostSource.like(id).catch(this.postsFailed('Impossible d\'aimer le post'));
         return id;
     }
-    removePost(posts, post) {
-        // TODO : Envoyer à l'API et retirer `post` de `posts`
-        return post;
+    removePost(posts, id, password) {
+        return (dispatch) => {
+            dispatch();
+            PostSource.remove(id, password).then((returnedPost) => {
+                console.log(returnedPost);
+                const newPosts = posts.filter((post) => post._id != id);
+                this.updatePosts(newPosts);
+            });
+        }
     }
     postsFailed(errorMessage) {
         return errorMessage;

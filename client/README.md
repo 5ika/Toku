@@ -1,6 +1,4 @@
-Ce dépôt est un template d'application utilisant Grunt. Il se veut simple et facilement customisable pour commencer à développer rapidement.
-
-Le template permet également de rapidement déployer votre application par l'intermédiaire de Docker.
+Le client utilise le template d'application https://github.com/5ika/Grunt-Docker. 
 
 ## Initialisation
 

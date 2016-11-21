@@ -10,7 +10,7 @@
     "clean": "bin/docker-clean.sh"
   },
   "config": {
-    "api": "http://cumulus:7042"
+    "api": "http://localhost:7042"
   },
   "docker": {
     "port": 9090

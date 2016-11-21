@@ -9,6 +9,17 @@ Elle est composée de deux parties :
 
 ![Screenshot de Toku](screenshot.png)
 
+## Utilisation
+
+Toku se veut simple et simpliste :
+
+- Il n'y a aucune authentification. Chaque utilisateur est libre d'utiliser le nom qu'il veut.
+- Le client n'a pas de dépendances externes. Ainsi, il peut être utilisé dans un réseau local non connecté à Internet.
+- Le client est *responsive*. Il s'adapte à toute taille d'écran.
+- Les postes sont des messages de 140 caractères maximum pouvant contenir une image.
+- Chaque *poste* est parsé pour mettre en valeur les **#hashtag**, **@at** et **émoticones :-)**.
+- Les postes peuvent être supprimés uniquement par ceux qui connaissent le mot de passe configuré sur l'API.
+
 ## Installation
 
 ### Avec Docker
@@ -25,7 +36,7 @@ Une fois terminée, vous pouvez accéder au client avec l'url `http://localhost:
 
 Pour aller plus loin, voir la documentation de [Docker](https://www.docker.com/) et de [docker-compose](https://docs.docker.com/compose/overview/).
 
-### Par parties
+### Sans Docker
 
 Il est également possible de lancer chaque partie séparement.
 
@@ -35,7 +46,7 @@ L'API permet de gérer les données et les stocker dans une base de données Mon
 
 Tout d'abord, modifiez la configuration dans `package.json` comme vous le souhaitez:
 
-```json
+```
 ...
 "config": {
     "port": 7042, // Port sur lequel écoute l'API
@@ -57,7 +68,7 @@ node app.js
 
 Modifiez la configuration dans `package.json` : 
 
-```json
+```
   ...
   "config": {
     "api": "http://<api-toku>:7042" // Remplace "<api-toku>" par l'adresse de votre API
@@ -81,14 +92,3 @@ Pour avoir rapidement un serveur NGINX servant les fichiers, vous pouvez utilise
 yarn run build
 yarn run start # Client lancé sur le port 9090 (voir package.json)
 ```
-
-##  Utilisation
-
-Toku se veut simple et simpliste :
-
-- Il n'y a aucune authentification. Chaque utilisateur est libre d'utiliser le nom qu'il veut.
-- Le client n'a pas de dépendances externes. Ainsi, il peut être utilisé dans un réseau local non connecté à Internet.
-- Le client est *responsive*. Il s'adapte à toute taille d'écran.
-- Les postes sont des messages de 140 caractères maximum pouvant contenir une image.
-- Chaque *poste* est parsé pour mettre en valeur les **#hashtag**, **@at** et **émoticones :-)**.
-- Les postes peuvent être supprimés uniquement par ceux qui connaissent le mot de passe configuré sur l'API.

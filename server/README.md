@@ -4,7 +4,7 @@ API REST pour gérer les données de l'application Toku.
 
 Modifiez le fichier `package.json` selon votre convenance :
 
-```json
+```
 ...
 "config": {
 

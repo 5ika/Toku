@@ -52682,7 +52682,7 @@ module.exports={
     "clean": "bin/docker-clean.sh"
   },
   "config": {
-    "api": "http://localhost:7042"
+    "api": "http://localhost:7042/api"
   },
   "docker": {
     "port": 9090

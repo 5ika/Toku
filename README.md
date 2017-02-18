@@ -2,7 +2,7 @@
 
 **Toku** est une application de micro-bloggage simpliste inspiré par Twitter.
 
-Elle est composée de deux parties :
+Elle est composée de deux parties:
 
 - Une API REST qui gère la base de données (MongoDB)
 - Un client léger utilisant [ReactJS](https://facebook.github.io/react/) et [Alt.js](http://alt.js.org/)
@@ -44,12 +44,12 @@ Il est également possible de lancer chaque partie séparement.
 
 L'API permet de gérer les données et les stocker dans une base de données MongoDB.
 
-Tout d'abord, modifiez la configuration dans `package.json` comme vous le souhaitez:
+Tout d'abord, modifiez la configuration dans `server/package.json` comme vous le souhaitez:
 
 ```
 ...
 "config": {
-    "port": 7042, // Port sur lequel écoute l'API
+    "port": 8080, // Port sur lequel écoute le serveur
     "delete_password": "random_password" // Mot de passe pour supprimer un poste
  }
 ...
@@ -58,37 +58,13 @@ Tout d'abord, modifiez la configuration dans `package.json` comme vous le souhai
 Puis lancez les commandes suivantes :
 
 ```sh
-cd server
-yarn # ou `npm install`
-export MONGODB_URL= mongo.example.com # FQDN de votre MongoDB (default = localhost)
-node app.js
-```
-
-#### Le client
-
-Modifiez la configuration dans `package.json` : 
-
-```
-  ...
-  "config": {
-    "api": "http://<api-toku>:7042" // Remplace "<api-toku>" par l'adresse de votre API
-  },
-  ...
-```
-
-Puis lancez les commandes suivantes :
-
-```shell
 cd client
 yarn # ou `npm install`
 node_modules/.bin/grunt build
+cd ../server
+yarn # ou `npm install`
+export MONGODB_URL= mongo.example.com # FQDN de votre MongoDB (default = localhost)
+node app
 ```
 
-Une fois cela fait, le dossier `dist/` contient tous les fichiers du client. Il faut ensuite les servire par le moyen que vous voulez : NGINX, Apache,...
-
-Pour avoir rapidement un serveur NGINX servant les fichiers, vous pouvez utiliser Docker à travers des scripts npm / yarn:
-
-```sh
-yarn run build
-yarn run start # Client lancé sur le port 9090 (voir package.json)
-```
+Vous pouvez ensuite accéder à l''interface web: `http://localhost:8080`.

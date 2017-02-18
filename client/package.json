@@ -10,10 +10,7 @@
     "clean": "bin/docker-clean.sh"
   },
   "config": {
-    "api": "http://localhost:7042"
-  },
-  "docker": {
-    "port": 9090
+    "api": "/api"
   },
   "author": "",
   "license": "MIT",

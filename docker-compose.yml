@@ -3,20 +3,12 @@ services:
  mongo:
   image: mongo
 
- api:
+ app:
   image: toku-api
   build:
    dockerfile: Dockerfile
    context: ./server/
   ports:
-   - "7042:7042"
+   - "8080:8080"
   environment:
    MONGODB_URL: mongo
-
- client:
-  image: toku-client
-  build:
-   dockerfile: Dockerfile
-   context: ./client
-  ports:
-   - "8080:80"

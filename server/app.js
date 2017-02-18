@@ -10,8 +10,11 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Serve client files
+app.use('/', express.static(__dirname + '/../client/dist'));
+
 // Link API
-app.use(api);
+app.use('/api', api);
 
 // Serve static files (images)
 app.use('/images/', express.static(__dirname + '/images'))

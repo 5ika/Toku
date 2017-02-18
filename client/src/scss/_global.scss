@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'NanumGothic';
+  src: url('/assets/fonts/NantumGothic/NanumGothic-Regular.eot');
+  src: url('/assets/fonts/NantumGothic/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/NantumGothic/NanumGothic-Regular.woff') format('woff'),
+       url('/assets/fonts/NantumGothic/NanumGothic-Regular.ttf') format('truetype'),
+       url('/assets/fonts/NantumGothic/NanumGothic-Regular.svg#NanumGothic') format('svg');
+}
+
+html, body{
+  font-family: 'NanumGothic',sans-serif;
+}

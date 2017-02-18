@@ -27,18 +27,23 @@ class Form extends React.Component {
     addPost(e) {
         e.preventDefault();
         if ($('.content .input-text').val()) {
-            if (!$('.author .input-text').val())
-                $('.author .input-text').val('Anonyme');
+            if (!$('.author .input-text').val()) $('.author .input-text').val('Anonyme');
+            else localStorage.setItem('author', $('.author .input-text').val());
             const data = new FormData($('#new-form')[0]);
             this.props.addPost(data);
             // Clear the form
-            $('.input-file, .input-text').val('');
+            $('.content textarea').val('');
             $('.actions .icon-file').removeClass('selected');
             $('.secondary').slideUp();
             $('.content textarea').removeClass('not-empty');
             // Notify
             toast('C\'est envoyé !');
         }
+    }
+    getAuthor() {
+      const settedName = localStorage.getItem('author');
+      if(settedName && settedName != '') return settedName;
+      return '';
     }
 
     render() {
@@ -66,7 +71,7 @@ class Form extends React.Component {
                     </div>
 
                     <div className='author'>
-                        <input type='text' className='input-text' placeholder='Anonyme' maxLength='20' name='auteur'/>
+                        <input type='text' className='input-text' placeholder='Anonyme' maxLength='20' name='auteur' defaultValue={this.getAuthor()}/>
                     </div>
                     <div className='submit'>
                         <button className='btn' onClick={this.addPost}>Poster</button>

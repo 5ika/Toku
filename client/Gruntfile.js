@@ -66,15 +66,6 @@ module.exports = (grunt) => {
             statics: ['dist/statics'],
             modules: ['node_modules']
         },
-        browserSync: {
-                bsFiles: {
-                    src: 'dist/**/*'
-                },
-                options: {
-                    watchTask: true,
-                    server: 'dist/'
-                }
-        },
         watch: {
             options: {
                 debounceDelay: 250,
@@ -106,9 +97,8 @@ module.exports = (grunt) => {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks('grunt-browser-sync')
     // ======================== REGISTER TASKS
-    grunt.registerTask("default", ["build", "browserSync", "watch"]);
+    grunt.registerTask("default", ["build", "watch"]);
     grunt.registerTask("build", [
         "clean:dist",
         "sass",

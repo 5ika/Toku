@@ -2,6 +2,7 @@ $body-width    : 95%;
 $body-max-width: 30rem;
 @import "materialize";
 @import "vendors/font-awesome/font-awesome";
+@import "./global";
 @import "./stoast";
 @import "components/App";
 @import "components/infos";

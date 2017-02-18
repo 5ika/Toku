@@ -52682,10 +52682,7 @@ module.exports={
     "clean": "bin/docker-clean.sh"
   },
   "config": {
-    "api": "http://localhost:7042/api"
-  },
-  "docker": {
-    "port": 9090
+    "api": "/api"
   },
   "author": "",
   "license": "MIT",
@@ -52705,7 +52702,6 @@ module.exports={
     "babel-preset-react": "^6.16.0",
     "babelify": "^7.3.0",
     "grunt": "^1.0.1",
-    "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
@@ -52784,6 +52780,7 @@ var PostActions = function () {
                     var newPosts = posts.filter(function (post) {
                         return post._id != id;
                     });
+                    toast('Poste supprimé');
                     _this3.updatePosts(newPosts);
                 });
             };
@@ -52885,7 +52882,7 @@ var App = function (_React$Component) {
         value: function componentDidMount() {
             PostStore.listen(this.onChange);
             PostActions.fetchPosts();
-            //this.refresh = setInterval(PostActions.fetchPosts, 20000);
+            // this.refresh = setInterval(PostActions.fetchPosts, 5000);
         }
     }, {
         key: 'componentWillUnmout',
@@ -52957,7 +52954,7 @@ var App = function (_React$Component) {
                     React.createElement(
                         'a',
                         { href: '/infos.html', target: '_blank', className: 'action more', title: 'Plus d\'infos' },
-                        React.createElement('i', { className: 'fa fa-plus-circle' })
+                        React.createElement('i', { className: 'fa fa-info-circle' })
                     )
                 )
             );
@@ -53026,17 +53023,24 @@ var Form = function (_React$Component) {
         value: function addPost(e) {
             e.preventDefault();
             if ($('.content .input-text').val()) {
-                if (!$('.author .input-text').val()) $('.author .input-text').val('Anonyme');
+                if (!$('.author .input-text').val()) $('.author .input-text').val('Anonyme');else localStorage.setItem('author', $('.author .input-text').val());
                 var data = new FormData($('#new-form')[0]);
                 this.props.addPost(data);
                 // Clear the form
-                $('.input-file, .input-text').val('');
+                $('.content textarea').val('');
                 $('.actions .icon-file').removeClass('selected');
                 $('.secondary').slideUp();
                 $('.content textarea').removeClass('not-empty');
                 // Notify
                 toast('C\'est envoyé !');
             }
+        }
+    }, {
+        key: 'getAuthor',
+        value: function getAuthor() {
+            var settedName = localStorage.getItem('author');
+            if (settedName && settedName != '') return settedName;
+            return '';
         }
     }, {
         key: 'render',
@@ -53084,7 +53088,7 @@ var Form = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'author' },
-                            _react2.default.createElement('input', { type: 'text', className: 'input-text', placeholder: 'Anonyme', maxLength: '20', name: 'auteur' })
+                            _react2.default.createElement('input', { type: 'text', className: 'input-text', placeholder: 'Anonyme', maxLength: '20', name: 'auteur', defaultValue: this.getAuthor() })
                         ),
                         _react2.default.createElement(
                             'div',
@@ -53178,7 +53182,6 @@ var Post = function (_React$Component) {
             var password = prompt('Merci d\'entrer le mot de passe pour supprimer', preset);
             if (preset != password) localStorage.setItem('remove_password', password);
             this.props.remove(this.props._id, password);
-            toast('Poste supprimé');
         }
     }, {
         key: 'render',

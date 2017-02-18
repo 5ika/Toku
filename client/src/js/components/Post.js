@@ -31,8 +31,7 @@ class Post extends React.Component {
 					const password = prompt('Merci d\'entrer le mot de passe pour supprimer', preset);
 					if(preset != password) localStorage.setItem('remove_password', password);
 					this.props.remove(this.props._id, password);
-     toast('Poste supprimé')
-				}
+		}
     render() {
         return <div className='post card' ref='post'>
             {this.props.image && <div className='card-image'>

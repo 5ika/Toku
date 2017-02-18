@@ -17,7 +17,7 @@ app.use('/', express.static(__dirname + '/../client/dist'));
 app.use('/api', api);
 
 // Serve static files (images)
-app.use('/images/', express.static(__dirname + '/images'))
+app.use('/api/images/', express.static(__dirname + '/images'))
 
 app.listen(config.port, () => {
     console.log(`API lancée sur le port ${config.port}`);

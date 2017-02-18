@@ -19,7 +19,7 @@ class App extends React.Component {
     componentDidMount() {
         PostStore.listen(this.onChange);
         PostActions.fetchPosts();
-        //this.refresh = setInterval(PostActions.fetchPosts, 20000);
+        // this.refresh = setInterval(PostActions.fetchPosts, 5000);
     }
 
     componentWillUnmout() {
@@ -39,14 +39,14 @@ class App extends React.Component {
         return this.state.store.liked.indexOf(id) != -1;
     }
 
-				removePost(id, password) {
-					PostActions.removePost(this.state.store.posts, id, password);
-				}
+		removePost(id, password) {
+				PostActions.removePost(this.state.store.posts, id, password);
+		}
 
     render() {
         return (
             <div className='app'>
-																<div className='app-title'><img className='responsive-img' src='/assets/logo.png'/></div>
+								<div className='app-title'><img className='responsive-img' src='/assets/logo.png'/></div>
                 <div className='form'>
                     <Form addPost={this.addPost}/>
                 </div>
@@ -61,7 +61,7 @@ class App extends React.Component {
                 } </div>
                 <div className='controls'>
                  <div className='action refresh' onClick={PostActions.fetchPosts} title='Rafraîchir les posts'><i className='fa fa-refresh'/></div>
-                 <a href='/infos.html' target='_blank' className='action more' title="Plus d'infos"><i className='fa fa-plus-circle'/></a>
+                 <a href='/infos.html' target='_blank' className='action more' title="Plus d'infos"><i className='fa fa-info-circle'/></a>
                 </div>
             </div>
            )

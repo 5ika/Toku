@@ -30,6 +30,7 @@ class PostActions {
             PostSource.remove(id, password).then((returnedPost) => {
                 console.log(returnedPost);
                 const newPosts = posts.filter((post) => post._id != id);
+                toast('Poste supprimé');
                 this.updatePosts(newPosts);
             });
         }

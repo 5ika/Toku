@@ -16,7 +16,7 @@
     "multer": "^1.2.0"
   },
   "config": {
-    "port": 8080,
+    "port": 8081,
     "delete_password": "random_password"
   }
 }

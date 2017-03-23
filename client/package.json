@@ -4,6 +4,7 @@
   "description": "Client Toku - Micro-blogging simpliste",
   "main": "gruntfile.js",
   "scripts": {
+		"dev": "grunt",
     "build": "bin/docker-build.sh",
     "start": "bin/docker-run.sh",
     "stop": "bin/docker-stop.sh",
